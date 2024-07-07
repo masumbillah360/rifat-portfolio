@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const ProjectPage = () => {
   return (
-    <div>ProjectPage</div>
-  )
-}
+    <section className="min-h-screen flex items-center justify-center">
+      Project Page
+    </section>
+  );
+};
 
-export default ProjectPage
+export default ProjectPage;

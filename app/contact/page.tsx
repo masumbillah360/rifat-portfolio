@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const ContactPage = () => {
   return (
-    <div>ContactPage</div>
-  )
-}
+    <section className="min-h-screen flex items-center justify-center">
+      Contact Page
+    </section>
+  );
+};
 
-export default ContactPage
+export default ContactPage;
