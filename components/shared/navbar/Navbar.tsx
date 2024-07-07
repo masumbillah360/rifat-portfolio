@@ -1,34 +1,38 @@
 "use client";
 
-import React from "react";
-import Logo from "./Logo";
-import { useTheme } from "next-themes";
-import { routes } from "@/constatns";
-import NavLink from "./NavLink";
-import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { routes } from "@/constatns";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
+import Logo from "./Logo";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
+import NavLink from "./NavLink";
+import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/toggle-theme";
 
 const Navbar = () => {
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const pathname = usePathname();
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  if (!hasMounted) return null;
   return (
     <nav className="w-full h-[52px] content-center">
       <section className="flex justify-between items-center max-w-7xl mx-auto">
-        {theme === "dark" ? (
-          <Logo src="/assets/images/logo-white.png" />
-        ) : (
+        {/* {theme === "dark" ? ( */}
+        <Logo src="/assets/images/logo-white.png" />
+        {/* ) : (
           <Logo src="/assets/images/logo-black.png" />
-        )}
+        )} */}
         <div className="flex flex-row gap-3">
           <ModeToggle />
           <div className="hidden md:flex">
