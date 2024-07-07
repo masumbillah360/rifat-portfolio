@@ -15,9 +15,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { usePathname } from "next/navigation";
+import { ModeToggle } from "@/components/ui/toggle-theme";
 
 const Navbar = () => {
   const { theme } = useTheme();
+  const pathname = usePathname();
   return (
     <nav className="w-full h-[52px] content-center">
       <section className="flex justify-between items-center max-w-7xl mx-auto">
@@ -26,20 +29,24 @@ const Navbar = () => {
         ) : (
           <Logo src="/assets/images/logo-black.png" />
         )}
-        <div>
+        <div className="flex flex-row gap-3">
+          <ModeToggle />
           <div className="hidden md:flex">
             {routes.map((route) => (
               <NavLink
                 key={route.name + "desktop"}
                 label={route.name}
                 path={route.path}
+                isActive={route.path === pathname}
               />
             ))}
           </div>
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger>
-                <Menu size={32} />
+                <Button variant="ghost" size="icon" className="border">
+                  <Menu size={32} />
+                </Button>
               </SheetTrigger>
               <SheetContent>
                 <SheetHeader>
