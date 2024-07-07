@@ -26,7 +26,7 @@ const Navbar = () => {
   }, []);
   if (!hasMounted) return null;
   return (
-    <nav className="w-full h-[52px] content-center">
+    <nav className="w-full h-[52px] content-center shadow-md sticky top-0">
       <section className="flex justify-between items-center max-w-7xl mx-auto">
         {/* {theme === "dark" ? ( */}
         <Logo src="/assets/images/logo-white.png" />
@@ -65,6 +65,7 @@ const Navbar = () => {
                     key={route.name + "mobile"}
                     label={route.name}
                     path={route.path}
+                    isActive={route.path === pathname}
                   />
                 ))}
               </SheetContent>
