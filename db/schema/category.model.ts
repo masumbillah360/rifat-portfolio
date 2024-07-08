@@ -16,5 +16,5 @@ export const category = sqliteTable("category", {
 });
 
 export const categoryRelations = relations(category, ({ many }) => ({
-  posts: many(content),
+  content: many(content),
 }));

@@ -14,7 +14,7 @@ const CategoryPage = async() => {
         title="All Categories"
         subTitle="Manage your categories from here."
       />
-      <CategoryClient />
+      <CategoryClient category={category} />
     </div>
   );
 };

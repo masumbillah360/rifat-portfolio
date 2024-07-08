@@ -5,8 +5,9 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useCategoryModal from "@/hooks/useCategoryModal";
+import CategoryCard from "@/components/ui/cards/categoryCard";
 
-const CategoryClient = () => {
+const CategoryClient = ({ category }: { category: any[] }) => {
   const categoryModal = useCategoryModal();
   return (
     <div>
@@ -28,7 +29,14 @@ const CategoryClient = () => {
           </Button>
         </div>
       </div>
-      <div></div>
+      <div>
+        <div>All Category</div>
+        <div>
+          {category.map((cat) => (
+            <CategoryCard key={cat.id} category={cat} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
