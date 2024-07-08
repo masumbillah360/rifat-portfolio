@@ -13,7 +13,7 @@ const NavLink = ({ label, path, isActive }: NavLinkProps) => {
       className={`w-full border m-[2px] px-2 py-1 rounded ${
         isActive
           ? "bg-gray-100 dark:bg-gray-600 border-b-green-300"
-          : ""
+          : "bg-white/5"
       }`}
     >
       <Link className="text-base text-gray-800 dark:text-gray-300" href={path}>

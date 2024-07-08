@@ -26,7 +26,7 @@ const Navbar = () => {
   }, []);
   if (!hasMounted) return null;
   return (
-    <nav className="w-full h-[52px] content-center shadow-md sticky top-0">
+    <nav className="w-full  content-center shadow-md sticky top-0 z-50 bg-white/35 dark:bg-slate-800/35 backdrop-blur-sm">
       <section className="flex justify-between items-center max-w-7xl mx-auto">
         {/* {theme === "dark" ? ( */}
         <Logo src="/assets/images/logo-white.png" />
