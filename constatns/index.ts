@@ -16,11 +16,26 @@ export const routes = [
     name: "Projects",
   },
   {
-    path: "/blog",
-    name: "Blog",
-  },
-  {
     path: "/contact",
     name: "Contact",
+  },
+];
+
+export const adminDashboardRoutes = [
+  {
+    path: "/admin",
+    name: "Dashboard",
+  },
+  {
+    path: "/admin/content",
+    name: "Content",
+  },
+  {
+    path: "/admin/add-content",
+    name: "Add Content",
+  },
+  {
+    path: "/admin/categories",
+    name: "Categories",
   },
 ];
