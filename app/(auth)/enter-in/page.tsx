@@ -54,6 +54,8 @@ const AdminLogin = () => {
     }
   }
   return (
+    <div className="w-full md:w-[80%] lg:max-w-3xl border rounded px-4 py-2">
+
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -82,9 +84,12 @@ const AdminLogin = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="w-full flex justify-center items-center">
+        <Button className="bg-slate-200 text-slate-800 hover:bg-white dark:hover:bg-black hover:border dark:bg-slate-800 dark:text-slate-200 font-bold" type="submit">Login</Button>
+        </div>
       </form>
     </Form>
+    </div>
   );
 };
 
