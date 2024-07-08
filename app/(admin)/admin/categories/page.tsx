@@ -1,11 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import SectionHeading from "@/components/ui/sectionHeading";
-import { Search } from "lucide-react";
 import React from "react";
 import CategoryClient from "./CategoryClient";
+import SectionHeading from "@/components/ui/sectionHeading";
+import { addCategory, getAllCategory } from "@/actions/category.action";
 
-const CategoryPage = () => {
+const CategoryPage = async() => {
+  const category = await getAllCategory();
+  console.log(["category"], category)
+  // const add_category = await addCategory()
+  // console.log({add_category})
   return (
     <div className="pt-4">
       <SectionHeading
