@@ -33,6 +33,7 @@ const Tiptap = ({ onChange, content }: any) => {
       Heading.configure({
         levels: [1, 2, 3],
       }),
+      Color
     ],
     editorProps: {
       attributes: {
