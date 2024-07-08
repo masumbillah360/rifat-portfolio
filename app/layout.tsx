@@ -6,6 +6,8 @@ import Navbar from "@/components/shared/navbar/Navbar";
 import CategoryModal from "@/components/modals/CategoryModal";
 import ToasterProvider from "@/components/provider/toast-provider";
 import { ThemeProvider } from "@/components/provider/theme-provider";
+import UpdateCategoryModal from "@/components/modals/UpdateCategory";
+import DeleteCategoryModal from "@/components/modals/DeleteCategory";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -40,6 +42,8 @@ export default function RootLayout({
           <main>
             <Navbar />
             <CategoryModal />
+            <UpdateCategoryModal />
+            <DeleteCategoryModal />
             {children}
           </main>
           <ToasterProvider />

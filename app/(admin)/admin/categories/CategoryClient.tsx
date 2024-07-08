@@ -4,7 +4,7 @@ import React from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import useCategoryModal from "@/hooks/useCategoryModal";
+import useCategoryModal from "@/hooks/category/useCategoryModal";
 import CategoryCard from "@/components/ui/cards/categoryCard";
 
 const CategoryClient = ({ category }: { category: any[] }) => {
@@ -17,14 +17,17 @@ const CategoryClient = ({ category }: { category: any[] }) => {
             <Input className="outline-none outline-border-none focus-visible:ring-0 focus-visible:ring-offset-0" />
           </div>
           <div>
-            <Button>
+            <Button variant="outline">
               <Search />
               <span className="hidden md:block">Search</span>
             </Button>
           </div>
         </div>
         <div>
-          <Button onClick={() => categoryModal.onOpen()}>
+          <Button
+            onClick={() => categoryModal.openModal("addCategory")}
+            variant="outline"
+          >
             Add
             <span className="hidden md:block ml-1">New Category</span>
           </Button>

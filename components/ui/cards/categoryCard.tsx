@@ -1,11 +1,29 @@
 "use client";
-import React from "react";
+import React, { useCallback } from "react";
 import { Button } from "../button";
 import { DeleteIcon, Edit } from "lucide-react";
+import useCategoryModal from "@/hooks/category/useCategoryModal";
+
 interface CategoryProps {
   category: any;
 }
 const CategoryCard = ({ category }: CategoryProps) => {
+  const { openModal } = useCategoryModal();
+  const handleOpenUpdateModal = () => {
+    openModal("updateCategory", {
+      id: category.category_id,
+      category: category.category,
+      description: category.description,
+    });
+  };
+  const handleOpenDeleteModal = () => {
+    openModal("deleteCategory", {
+      id: category.category_id,
+      category: category.category,
+      description: category.description,
+    });
+  };
+
   return (
     <div className="p-4 border rounded flex flex-row justify-between items-start gap-2">
       <div>
@@ -22,10 +40,20 @@ const CategoryCard = ({ category }: CategoryProps) => {
         </div>
       </div>
       <div className="flex gap-1">
-        <Button className="text-green-500" size="icon">
+        <Button
+          onClick={handleOpenUpdateModal}
+          className="text-green-500"
+          size="icon"
+          variant="outline"
+        >
           <Edit />
         </Button>
-        <Button className="text-rose-500" size="icon">
+        <Button
+          onClick={handleOpenDeleteModal}
+          className="text-rose-500"
+          size="icon"
+          variant="outline"
+        >
           <DeleteIcon />
         </Button>
       </div>

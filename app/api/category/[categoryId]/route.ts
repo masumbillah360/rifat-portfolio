@@ -10,7 +10,7 @@ interface IParams {
 export async function PATCH(request: Request, { params }: { params: IParams }) {
   try {
     const user = await getCurrentUser();
-    if (!user || user?.email) {
+    if (!user || !user?.email) {
       throw new Error("Unauthorized User");
     }
     if (!params?.categoryId || typeof params?.categoryId !== "string") {
@@ -26,7 +26,8 @@ export async function PATCH(request: Request, { params }: { params: IParams }) {
       .where(eq(category.category_id, params.categoryId as string));
     return Response.json(newCategory);
   } catch (error: any) {
-    throw new error(error.message);
+    console.log(["UPDATE"],error)
+    return Response.error()
   }
 }
 
@@ -36,7 +37,7 @@ export async function DELETE(
 ) {
   try {
     const user = await getCurrentUser();
-    if (!user || user?.email) {
+    if (!user || !user?.email) {
       throw new Error("Unauthorized User");
     }
     if (!params?.categoryId || typeof params?.categoryId !== "string") {
@@ -47,6 +48,6 @@ export async function DELETE(
       .where(eq(category.category_id, params.categoryId as string));
     return Response.json(newCategory);
   } catch (error: any) {
-    throw new error(error.message);
+    return Response.error()
   }
 }

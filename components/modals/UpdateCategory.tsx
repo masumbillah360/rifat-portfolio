@@ -3,7 +3,7 @@
 import { z } from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import useCategoryModal from "@/hooks/category/useCategoryModal";
@@ -20,42 +20,46 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "../ui/button";
+
 const formSchema = z.object({
   category: z
     .string()
     .min(1, { message: "Minimum value will be 1" })
     .max(50, { message: "Maximum value will be 50" }),
-  description: z
-    .string()
-    .max(150, { message: "Maximum length will be 150" })
-    .nullable(),
+  description: z.string().max(150, { message: "Maximum length will be 150" }),
 });
-const CategoryModal = () => {
+
+const UpdateCategoryModal = () => {
   const router = useRouter();
-  const categoryModal = useCategoryModal();
+  const { data, closeModal, modals } = useCategoryModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      category: "",
-      description: "",
+      category: data.category,
+      description: data.description,
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  useEffect(() => {
+    form.reset({
+      category: data.category,
+      description: data.description,
+    });
+  }, [data, form]);
+
+  const onSubmit = async (formData: z.infer<typeof formSchema>) => {
     setIsLoading(true);
 
     try {
-      await axios.post("/api/category", data);
-      toast.success("Created Category");
-      categoryModal.closeModal("addCategory");
+      await axios.patch(`/api/category/${data.id}`, formData);
+      toast.success("Updated Category");
+      closeModal("updateCategory");
       form.reset();
       router.refresh();
-      return;
     } catch (error: any) {
       console.log(error);
-      setIsLoading(false);
       toast.error(error.message as string);
     } finally {
       setIsLoading(false);
@@ -93,7 +97,6 @@ const CategoryModal = () => {
                   <Input
                     placeholder="Short Description"
                     {...field}
-                    value={field.value || ""}
                     className="dark:bg-slate-900"
                   />
                 </FormControl>
@@ -106,7 +109,7 @@ const CategoryModal = () => {
             disabled={isLoading}
             type="submit"
           >
-            Add Category
+            Update Category
           </Button>
         </form>
       </Form>
@@ -115,12 +118,12 @@ const CategoryModal = () => {
 
   return (
     <Modal
-      isOpen={categoryModal.modals.addCategory}
-      title="Create a new category"
-      onClose={() => categoryModal.closeModal("addCategory")}
+      isOpen={modals.updateCategory}
+      title="Update category"
+      onClose={() => closeModal("updateCategory")}
       body={bodyContent}
     />
   );
 };
 
-export default CategoryModal;
+export default UpdateCategoryModal;

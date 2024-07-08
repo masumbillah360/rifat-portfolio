@@ -35,7 +35,9 @@ const Sidebar = ({ user }: Props) => {
           ))}
         </div>
         <div>
-          <Button className="w-full">Logout</Button>
+          <Button variant="secondary"  className="w-full">
+            Logout
+          </Button>
         </div>
       </div>
     </div>
