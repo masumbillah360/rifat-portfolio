@@ -6,7 +6,7 @@ import { category } from "@/db/schema/category.model";
 export const getAllCategory = async () => {
   try {
     const categories = await db.query.category.findMany({
-      orderBy: (cat, { asc }) => [asc(cat.id)],
+      orderBy: (cat, { desc }) => [desc(cat.id)],
       with: {
         content: {
           columns: {

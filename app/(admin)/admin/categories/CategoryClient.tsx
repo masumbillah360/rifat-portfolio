@@ -25,13 +25,16 @@ const CategoryClient = ({ category }: { category: any[] }) => {
         </div>
         <div>
           <Button onClick={() => categoryModal.onOpen()}>
-            <span className="hidden md:block">Add </span>New Category
+            Add
+            <span className="hidden md:block ml-1">New Category</span>
           </Button>
         </div>
       </div>
       <div>
-        <div className="my-1 py-1 font-semibold text-slate-700 dark:text-slate-300">Founded Category: {category.length}</div>
-        <div>
+        <div className="my-1 py-1 font-semibold text-slate-700 dark:text-slate-300">
+          Founded Category: {category.length}
+        </div>
+        <div className="flex flex-col gap-3">
           {category.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />
           ))}

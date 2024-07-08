@@ -1,6 +1,7 @@
 "use client";
 
 import { z } from "zod";
+import axios from "axios";
 import toast from "react-hot-toast";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -19,7 +20,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "../ui/button";
-import { addCategory } from "@/actions/category.action";
 const formSchema = z.object({
   category: z
     .string()
@@ -45,11 +45,9 @@ const CategoryModal = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
-    // await addCategory({
-    //   category: data.category,
-    //   description: data?.description || undefined,
-    // });
+    
     try {
+      await axios.post('/api/category', data);
       toast.success("Created Category");
       categoryModal.onClose();
       form.reset();

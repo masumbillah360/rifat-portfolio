@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     });
     return Response.json(newCategory);
   } catch (error: any) {
+    console.log(["ADD Category "],error)
     throw new error(error.message);
   }
 }
