@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/provider/theme-provider";
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
 import Navbar from "@/components/shared/navbar/Navbar";
+import CategoryModal from "@/components/modals/CategoryModal";
+import ToasterProvider from "@/components/provider/toast-provider";
+import { ThemeProvider } from "@/components/provider/theme-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -37,9 +39,10 @@ export default function RootLayout({
         >
           <main>
             <Navbar />
-
+            <CategoryModal />
             {children}
           </main>
+          <ToasterProvider />
         </ThemeProvider>
       </body>
     </html>
