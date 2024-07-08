@@ -24,12 +24,10 @@ export const getAllCategory = async () => {
   }
 };
 
-export const addCategory = async () => {
+export const addCategory = async (data: { category: string, description: string | undefined}) => {
   try {
-    const newCategory = await db.insert(category).values({
-      category: "New Category",
-      description: "This is a new category",
-    });
+
+    const newCategory = await db.insert(category).values(data);
     return newCategory;
   } catch (error) {
     console.log(error);

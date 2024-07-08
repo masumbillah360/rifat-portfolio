@@ -19,11 +19,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "../ui/button";
+import { addCategory } from "@/actions/category.action";
 const formSchema = z.object({
   category: z
     .string()
     .min(1, { message: "Minimum value will be 1" })
     .max(50, { message: "Maximum value will be 50" }),
+  description: z
+    .string()
+    .max(150, { message: "Maximum length will be 150" })
+    .nullable(),
 });
 const CategoryModal = () => {
   const router = useRouter();
@@ -34,13 +39,16 @@ const CategoryModal = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       category: "",
+      description: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
-    const formData = new FormData();
-    formData.append("category", data.category);
+    // await addCategory({
+    //   category: data.category,
+    //   description: data?.description || undefined,
+    // });
     try {
       toast.success("Created Category");
       categoryModal.onClose();
@@ -67,13 +75,31 @@ const CategoryModal = () => {
               <FormItem>
                 <FormLabel>Category</FormLabel>
                 <FormControl>
-                  <Input placeholder="Category Name" {...field} />
+                  <Input className="dark:bg-slate-900" placeholder="Category Name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button disabled={isLoading} type="submit">
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Short Description"
+                    {...field}
+                    value={field.value || ""}
+                    className="dark:bg-slate-900"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button className="dark:bg-slate-900 dark:text-white" disabled={isLoading} type="submit">
             Add Category
           </Button>
         </form>

@@ -1,18 +1,17 @@
 import React from "react";
-import Sidebar from "@/components/shared/sidebar/Sidebar"; 
+import Sidebar from "@/components/shared/sidebar/Sidebar";
+import getCurrentUser from "@/actions/getUser.action";
 
-const AdminLayout = ({ children }: { children: React.ReactNode }) => {
+
+const AdminLayout = async({ children }: { children: React.ReactNode }) => {
+  const user = await getCurrentUser();
+  console.log(user)
   return (
-    <div>
-      <div className="flex gap-6">
-        <div className="min-w-[272px] hidden lg:block">
-          <h3 className="text-center text-green-400 dark:text-slate-400">
-            Admin Dashboard
-          </h3>
-          <Sidebar />
-        </div>
-        <div className="flex-1 min-h-screen">{children}</div>
+    <div className="flex gap-6">
+      <div className="min-w-[272px] hidden lg:block">
+        <Sidebar user={user} />
       </div>
+      <div className="flex-1 min-h-screen">{children}</div>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const CategoryClient = ({ category }: { category: any[] }) => {
         </div>
       </div>
       <div>
-        <div>All Category</div>
+        <div className="my-1 py-1 font-semibold text-slate-700 dark:text-slate-300">Founded Category: {category.length}</div>
         <div>
           {category.map((cat) => (
             <CategoryCard key={cat.id} category={cat} />

@@ -9,4 +9,6 @@ export default {
     url: config.DB_URL,
     authToken: config.DB_TOKEN,
   },
+  strict: true,
+  verbose: true,
 } satisfies Config;

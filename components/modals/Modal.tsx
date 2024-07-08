@@ -51,7 +51,7 @@ const Modal = ({ isOpen, onClose, title, body }: ModalProps) => {
             ${showModal ? "translate-y-0" : "translate-y-full"}
             ${showModal ? "opacity-100" : "opacity-0"}`}
         >
-          <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg relative flex flex-col w-full bg-white dark:bg-slate-800 outline-none focus:outline-none">
             {/* HEADER */}
             <div className="flex items-center justify-center p-6 rounded-t relative border-b-[1px]">
               <button
