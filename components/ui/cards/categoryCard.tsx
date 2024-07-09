@@ -1,26 +1,27 @@
 "use client";
-import React, { useCallback } from "react";
+import React from "react";
+import { Category } from "@/types";
 import { Button } from "../button";
 import { DeleteIcon, Edit } from "lucide-react";
 import useCategoryModal from "@/hooks/category/useCategoryModal";
 
 interface CategoryProps {
-  category: any;
+  category: Category;
 }
 const CategoryCard = ({ category }: CategoryProps) => {
   const { openModal } = useCategoryModal();
   const handleOpenUpdateModal = () => {
     openModal("updateCategory", {
-      id: category.category_id,
+      id: category.category_id!,
       category: category.category,
-      description: category.description,
+      description: category.description as string,
     });
   };
   const handleOpenDeleteModal = () => {
     openModal("deleteCategory", {
-      id: category.category_id,
+      id: category.category_id!,
       category: category.category,
-      description: category.description,
+      description: category.description as string,
     });
   };
 

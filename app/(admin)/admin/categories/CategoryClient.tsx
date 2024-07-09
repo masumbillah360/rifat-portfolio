@@ -6,8 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useCategoryModal from "@/hooks/category/useCategoryModal";
 import CategoryCard from "@/components/ui/cards/categoryCard";
+import { Category } from "@/types";
 
-const CategoryClient = ({ category }: { category: any[] }) => {
+interface Props {
+  category: Category[];
+}
+
+const CategoryClient = ({ category }: Props) => {
   const categoryModal = useCategoryModal();
   return (
     <div>
