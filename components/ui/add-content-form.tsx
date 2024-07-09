@@ -64,7 +64,7 @@ const AddContentForm = ({ categories }: Props) => {
                 <FormLabel>Title</FormLabel>
                 <FormControl>
                   <Input
-                    className="dark:bg-slate-900"
+                    className=""
                     placeholder="Describe title"
                     {...field}
                   />
@@ -81,7 +81,7 @@ const AddContentForm = ({ categories }: Props) => {
                 <FormLabel>Subtitle</FormLabel>
                 <FormControl>
                   <Input
-                    className="dark:bg-slate-900"
+                    className=""
                     placeholder="Describe subtitle"
                     {...field}
                   />
@@ -130,7 +130,7 @@ const AddContentForm = ({ categories }: Props) => {
                 <FormLabel>Upload Thumbnail</FormLabel>
                 <FormControl>
                   <UploadDropzone
-                    className="cursor-pointer"
+                    className="cursor-pointer border dark:border-slate-500 border-slate-700"
                     endpoint="imageUploader"
                     onDrop={(acceptedFiles) => {
                       const urls = acceptedFiles.map((file) =>
