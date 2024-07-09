@@ -13,6 +13,5 @@ export type Category = {
   createdAt: string;
   content: {
     title: string;
-    sellCount: number | null;
   }[];
 };

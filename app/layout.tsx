@@ -9,6 +9,14 @@ import { ThemeProvider } from "@/components/provider/theme-provider";
 import UpdateCategoryModal from "@/components/modals/UpdateCategory";
 import DeleteCategoryModal from "@/components/modals/DeleteCategory";
 
+
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+
+import { ourFileRouter } from "@/app/api/uploadthing/core";
+ 
+
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -39,6 +47,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NextSSRPlugin
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
           <main>
             <Navbar />
             <CategoryModal />

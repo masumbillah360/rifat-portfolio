@@ -7,7 +7,7 @@ export const category = sqliteTable("category", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   category_id: text("category_id")
     .$default(() => randomUUID().toString())
-    .unique(),
+    .unique().notNull(),
   category: text("category", { length: 50 }).notNull().unique(),
   description: text("description", { length: 150 }),
   createdAt: text("createdAt")

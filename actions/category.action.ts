@@ -11,7 +11,6 @@ export const getAllCategory = async () => {
         content: {
           columns: {
             title: true,
-            sellCount: true,
           },
           orderBy: (content, { desc }) => [desc(content.id)],
         },

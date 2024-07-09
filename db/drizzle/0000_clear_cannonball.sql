@@ -12,7 +12,7 @@ CREATE TABLE `content` (
 	`title` text(50) NOT NULL,
 	`subTitle` text(150),
 	`content` text(5000) NOT NULL,
-	`sell_count` integer,
+	`thumbnail` text,
 	`categoryId` integer,
 	`createdAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
