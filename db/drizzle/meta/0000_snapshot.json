@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "342c011d-bcb3-4d29-8284-413997a07617",
+  "id": "cd780f4b-b535-4540-a435-e61c5d1d8810",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "category": {
@@ -18,7 +18,7 @@
           "name": "category_id",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
         "category": {
@@ -106,8 +106,9 @@
           "name": "thumbnail",
           "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(json_array())"
         },
         "categoryId": {
           "name": "categoryId",

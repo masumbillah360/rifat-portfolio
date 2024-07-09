@@ -7,7 +7,7 @@ const AdminLayout = async({ children }: { children: React.ReactNode }) => {
   const user = await getCurrentUser();
   console.log(user)
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 max-w-7xl mx-auto">
       <div className="min-w-[272px] hidden lg:block">
         <Sidebar user={user} />
       </div>

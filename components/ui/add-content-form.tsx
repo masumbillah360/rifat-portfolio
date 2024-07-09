@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormControl,
@@ -26,6 +26,8 @@ import { UploadDropzone } from "@/lib/utils";
 import { Button } from "./button";
 import Tiptap from "../rich-editor/RichEditor";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   title: z.string().min(5).max(100),
@@ -39,6 +41,8 @@ interface Props {
   categories: Category[] | [];
 }
 const AddContentForm = ({ categories }: Props) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -49,8 +53,19 @@ const AddContentForm = ({ categories }: Props) => {
       thumbnail: [],
     },
   });
-  const onSubmit = (data: z.infer<typeof schema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof schema>) => {
+    try {
+      setIsLoading(true);
+      await axios.post("/api/content", data);
+      form.reset();
+      toast.success("Successfully added content!");
+      router.push("/admin/content");
+    } catch (error) {
+      console.log(["ERROR TO ADD Content", error]);
+      toast.error("Failed to add content");
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <div>
@@ -63,11 +78,7 @@ const AddContentForm = ({ categories }: Props) => {
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input
-                    className=""
-                    placeholder="Describe title"
-                    {...field}
-                  />
+                  <Input className="" placeholder="Describe title" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -171,7 +182,12 @@ const AddContentForm = ({ categories }: Props) => {
             )}
           />
           <div className="flex w-full items-center justify-center md:justify-end">
-            <Button type="submit" variant="outline">
+            <Button
+              disabled={isLoading}
+              type="submit"
+              variant="outline"
+              className="disabled:cursor-not-allowed"
+            >
               Add Content
             </Button>
           </div>

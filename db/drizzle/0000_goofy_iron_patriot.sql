@@ -1,6 +1,6 @@
 CREATE TABLE `category` (
 	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
-	`category_id` text,
+	`category_id` text NOT NULL,
 	`category` text(50) NOT NULL,
 	`description` text(150),
 	`createdAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL
@@ -12,7 +12,7 @@ CREATE TABLE `content` (
 	`title` text(50) NOT NULL,
 	`subTitle` text(150),
 	`content` text(5000) NOT NULL,
-	`thumbnail` text,
+	`thumbnail` text DEFAULT (json_array()) NOT NULL,
 	`categoryId` integer,
 	`createdAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );

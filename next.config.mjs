@@ -5,7 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "utfs.io",
-        pathname: process.env.UPLOADTHING_APP_ID,
+        // pathname: process.env.UPLOADTHING_APP_ID,
       },
     ],
   },
