@@ -22,8 +22,10 @@ import {
 } from "@/components/ui/select";
 import { Category } from "@/types";
 import { ScrollArea } from "./scroll-area";
-import { UploadButton, UploadDropzone } from "@/lib/utils";
+import { UploadDropzone } from "@/lib/utils";
 import { Button } from "./button";
+import Tiptap from "../rich-editor/RichEditor";
+import toast from "react-hot-toast";
 
 const schema = z.object({
   title: z.string().min(5).max(100),
@@ -135,16 +137,14 @@ const AddContentForm = ({ categories }: Props) => {
                         URL.createObjectURL(file)
                       );
                       field.onChange(urls);
-                      console.log("Files: ", acceptedFiles);
                     }}
                     onClientUploadComplete={(res) => {
                       const urls = res.map((file) => file.url);
                       field.onChange(urls);
-                      console.log("Upload response: ", res);
-                      alert("Upload Completed");
+                      toast.success("Upload Completed");
                     }}
                     onUploadError={(error: Error) => {
-                      alert(`ERROR! ${error.message}`);
+                      toast.error(`ERROR! ${error.message}`);
                     }}
                   />
                 </FormControl>
@@ -159,10 +159,11 @@ const AddContentForm = ({ categories }: Props) => {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input
-                    className="dark:bg-slate-900"
-                    placeholder="Describe title"
-                    {...field}
+                  <Tiptap
+                    content={field.value}
+                    onChange={(newContent: string) =>
+                      field.onChange(newContent)
+                    }
                   />
                 </FormControl>
                 <FormMessage />
