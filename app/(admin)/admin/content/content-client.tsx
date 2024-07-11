@@ -40,7 +40,7 @@ const ContentClient = ({ contents }: Props) => {
         <div className="my-1 py-1 font-semibold text-slate-700 dark:text-slate-300">
           Founded Content: {contents.length}
         </div>
-        <div className="grid sm:grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+        <div className="grid sm:grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 justify-between items-center">
           {contents.map((content) => (
             <ContentCard key={content.content_id} content={content} />
           ))}

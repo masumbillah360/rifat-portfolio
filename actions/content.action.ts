@@ -1,6 +1,9 @@
 "use server";
 
 import { db } from "@/db";
+import { eq } from "drizzle-orm";
+import { content } from "@/db/schema";
+
 
 export const getAllContent = async () => {
   try {
@@ -18,5 +21,26 @@ export const getAllContent = async () => {
   } catch (error) {
     console.log(error);
     return [];
+  }
+};
+
+export const getContentDetails = async (id: string) => {
+  try {
+    const isContent = await db.query.content.findFirst({
+      where: eq(content.content_id, id),
+      with: {
+        category: {
+          columns: {
+            category: true,
+          },
+        },
+      },
+    });
+    if (!isContent) {
+      return null;
+    }
+    return isContent;
+  } catch (error) {
+    return null;
   }
 };

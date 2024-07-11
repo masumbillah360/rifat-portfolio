@@ -35,6 +35,7 @@ const Tiptap = ({ onChange, content }: any) => {
       }),
       Color
     ],
+    content: content,
     editorProps: {
       attributes: {
         class:
@@ -49,7 +50,7 @@ const Tiptap = ({ onChange, content }: any) => {
   return (
     <div className="w-full">
       <Toolbar editor={editor} content={content} />
-      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} />
+      <EditorContent style={{ whiteSpace: "pre-line" }} editor={editor} content={content} />
     </div>
   );
 };

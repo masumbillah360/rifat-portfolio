@@ -2,7 +2,6 @@ import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { category, content } from "@/db/schema";
 import getCurrentUser from "@/actions/getUser.action";
-import { utapi } from "@/actions/uploadthing";
 
 interface IParams {
   contentId?: string;
@@ -62,7 +61,7 @@ export async function PATCH(request: Request, { params }: { params: IParams }) {
       if (unmatchedThumbnails.length > 0) {
         // If there are unmatched thumbnails, delete them using the API
         try {
-          await utapi.deleteFiles(unmatchedThumbnails);
+          // await utapi.deleteFiles(unmatchedThumbnails);
         } catch (error) {
           console.error("Failed to delete files:", error);
         }
