@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { routes } from "@/constatns";
 import toast from "react-hot-toast";
 
 export const Footer = () => {
@@ -18,172 +19,63 @@ export const Footer = () => {
         <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
           <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
             <div>
+              <p className="font-medium tracking-wide text-gray-300">Link</p>
+              <div className="mt-2 space-y-2">
+                {routes.map((route) => (
+                  <div key={route.name + "Footer"}>
+                    <a
+                      href={route.path}
+                      className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                    >
+                      {route.name}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
               <p className="font-medium tracking-wide text-gray-300">
                 Category
               </p>
-              <ul className="mt-2 space-y-2">
-                <li>
+              <div className="mt-2 space-y-2">
+                <div className="list-none">
                   <a
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
                     News
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    World
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Games
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    References
-                  </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
-            <div>
-              <p className="font-medium tracking-wide text-gray-300">Apples</p>
-              <ul className="mt-2 space-y-2">
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Web
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    eCommerce
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Business
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Entertainment
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Portfolio
-                  </a>
-                </li>
-              </ul>
-            </div>
+
             <div>
               <p className="font-medium tracking-wide text-gray-300">Cherry</p>
-              <ul className="mt-2 space-y-2">
-                <li>
+              <div className="mt-2 space-y-2">
+                <div>
                   <a
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
                     Media
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Brochure
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Nonprofit
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Educational
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Projects
-                  </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
             <div>
               <p className="font-medium tracking-wide text-gray-300">
                 Business
               </p>
-              <ul className="mt-2 space-y-2">
-                <li>
+              <div className="mt-2 space-y-2">
+                <div>
                   <a
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
                     Infopreneur
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Personal
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Wiki
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                  >
-                    Forum
-                  </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div className="md:max-w-md lg:col-span-2">
