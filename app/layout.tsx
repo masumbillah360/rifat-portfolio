@@ -15,6 +15,7 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import DeleteContentModal from "@/components/modals/ContentDeleteModal";
+import { Footer } from "@/components/shared/footer/Footer";
  
 
 
@@ -58,6 +59,7 @@ export default function RootLayout({
             <UpdateCategoryModal />
             <DeleteCategoryModal />
             {children}
+            <Footer />
           </main>
           <ToasterProvider />
         </ThemeProvider>
