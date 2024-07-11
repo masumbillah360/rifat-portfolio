@@ -16,6 +16,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import DeleteContentModal from "@/components/modals/ContentDeleteModal";
 import { Footer } from "@/components/shared/footer/Footer";
+import { getAllCategory } from "@/actions/category.action";
  
 
 
@@ -30,11 +31,12 @@ export const metadata: Metadata = {
     "This is a Rifat Hasan, A passionate and fully dedicated designer from Bangladesh",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const categories = await getAllCategory(4);
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -59,7 +61,7 @@ export default function RootLayout({
             <UpdateCategoryModal />
             <DeleteCategoryModal />
             {children}
-            <Footer />
+            <Footer categories={categories} />
           </main>
           <ToasterProvider />
         </ThemeProvider>
