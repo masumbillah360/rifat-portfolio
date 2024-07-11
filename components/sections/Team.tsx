@@ -1,6 +1,6 @@
 export const Team = () => {
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl py-4">
       <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
         <div className="grid sm:grid-cols-3">
           <div className="relative w-full h-48 max-h-full rounded shadow sm:h-auto">
