@@ -12,6 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from "@/components/ui/sheet";
 import NavLink from "./NavLink";
 import { Button } from "@/components/ui/button";
@@ -47,7 +48,7 @@ const Navbar = () => {
           </div>
           <div className="md:hidden">
             <Sheet>
-              <SheetTrigger>
+              <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="border">
                   <Menu size={32} />
                 </Button>
@@ -55,19 +56,22 @@ const Navbar = () => {
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle>
-                    <h1 className="font-extrabold text-xl tracking-tighter text-gray-800 dark:text-gray-300">
+                    <div className="font-extrabold text-xl tracking-tighter text-gray-800 dark:text-gray-300">
                       RI<span className="text-green-400 text-2xl">F</span>AT
-                    </h1>
+                    </div>
                   </SheetTitle>
                 </SheetHeader>
-                {routes.map((route) => (
-                  <NavLink
-                    key={route.name + "mobile"}
-                    label={route.name}
-                    path={route.path}
-                    isActive={route.path === pathname}
-                  />
-                ))}
+                <div className="w-full flex flex-col gap-3">
+                  {routes.map((route) => (
+                    <SheetClose asChild key={"mobile" + route.name}>
+                      <NavLink
+                        label={route.name}
+                        path={route.path}
+                        isActive={route.path === pathname}
+                      />
+                    </SheetClose>
+                  ))}
+                </div>
               </SheetContent>
             </Sheet>
           </div>

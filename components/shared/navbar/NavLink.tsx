@@ -17,7 +17,7 @@ const NavLink = ({ label, path, isActive }: NavLinkProps) => {
           : "bg-white/5"
       }`}
     >
-      <div className="text-base text-gray-800 dark:text-gray-300">{label}</div>
+      <div className="text-base text-gray-800 dark:text-gray-300 w-full">{label}</div>
     </Link>
   );
 };
