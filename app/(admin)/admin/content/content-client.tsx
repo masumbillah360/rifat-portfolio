@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ContentCard from "@/components/ui/cards/content-card";
+import { User } from "next-auth";
 
 interface Props {
   contents: any[];
+  user?: User | null;
 }
 
-const ContentClient = ({ contents }: Props) => {
+const ContentClient = ({ contents, user }: Props) => {
   const router = useRouter();
   return (
     <div>
@@ -42,7 +44,11 @@ const ContentClient = ({ contents }: Props) => {
         </div>
         <div className="grid sm:grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 justify-between items-center">
           {contents.map((content) => (
-            <ContentCard key={content.content_id} content={content} />
+            <ContentCard
+              key={content.content_id}
+              content={content}
+              user={user}
+            />
           ))}
         </div>
       </div>

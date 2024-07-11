@@ -1,5 +1,5 @@
 export const config = {
-  DB_URL: "libsql://new-db-dev-billah.turso.io",
+  DB_URL: "libsql://test-db-dev-billah.turso.io",
   DB_TOKEN:
-    "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MjA1MzczMTYsImlkIjoiZDFlMzk0NzItMjk5Zi00OTgxLWI5ZmEtMGUwOWY4YmZjODU5In0.qtdrzfof8_BhbcCiutvFC9w0yqIBkHjD2FOvcgIR-v1nNBjwWfM3LEWj21qLEByoAdFXWNbV4hyxLQacSIckDA",
+    "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MjA2NjQwMzUsImlkIjoiODAyM2VhY2EtNmU3MC00ZGQzLWE3MzctYWE2YjAxNGVjNWUzIn0.S371ar76vEohqhjVgn5vaQXiVLKE923an2gUArbMNOg99EIPE1z_Xn-wC9VLIMd2EFsK36GBQpbZorHh-1d0CA",
 };

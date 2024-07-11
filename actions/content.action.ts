@@ -1,8 +1,9 @@
 "use server";
 
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
+import { eq, not } from "drizzle-orm";
 import { content } from "@/db/schema";
+import getCurrentUser from "./getUser.action";
 
 
 export const getAllContent = async () => {
@@ -44,3 +45,19 @@ export const getContentDetails = async (id: string) => {
     return null;
   }
 };
+
+export const toggleContentStatus = async (id:string) => {
+  const user = await getCurrentUser();
+  if(!user || !user?.email) {
+    throw new Error("Unauthorized user");
+  }
+  try {
+    const updatedContent = await db.update(content).set({
+      contentStatus: not(content.contentStatus),
+    }).returning();
+    return updatedContent[0];
+  } catch (error) {
+    console.log(["ERROR TO UPDATE ", error])
+  }
+
+}

@@ -15,7 +15,7 @@ CREATE TABLE `content` (
 	`thumbnail` text DEFAULT (json_array()) NOT NULL,
 	`categoryId` integer,
 	`content_status` integer DEFAULT true,
-	`search_key` text,
+	`search_key` text DEFAULT '',
 	`createdAt` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 --> statement-breakpoint

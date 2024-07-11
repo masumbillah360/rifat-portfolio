@@ -1,7 +1,9 @@
 "use client";
 
+import { toggleContentStatus } from "@/actions/content.action";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/ui/sectionHeading";
+import StatusToggleButton from "@/components/ui/status-toggle-button";
 import { Delete, Edit } from "lucide-react";
 import { User } from "next-auth";
 import Image from "next/image";
@@ -16,6 +18,11 @@ const ContentDetails = ({ content, user }: Props) => {
   if (!user || !user?.email) {
     redirect("/");
   }
+  const handleStatusToggle = async (e: any) => {
+    e.preventDefault();
+    await toggleContentStatus(content.content_id);
+    router.refresh();
+  };
   const markup = { __html: content.description };
   return (
     <div>
@@ -29,7 +36,11 @@ const ContentDetails = ({ content, user }: Props) => {
             {content.category.category}
           </Button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
+          <StatusToggleButton
+            status={content.contentStatus}
+            handleStatus={handleStatusToggle}
+          />
           <Button variant="outline" size="icon">
             <Edit
               onClick={() =>
