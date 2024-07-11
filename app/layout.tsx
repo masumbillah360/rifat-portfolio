@@ -14,6 +14,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "@/app/api/uploadthing/core";
+import DeleteContentModal from "@/components/modals/ContentDeleteModal";
  
 
 
@@ -53,6 +54,7 @@ export default function RootLayout({
           <main>
             <Navbar />
             <CategoryModal />
+            <DeleteContentModal />
             <UpdateCategoryModal />
             <DeleteCategoryModal />
             {children}

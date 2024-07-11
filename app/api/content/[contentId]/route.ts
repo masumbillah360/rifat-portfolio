@@ -89,7 +89,7 @@ export async function DELETE(
     }
     const deleteContent = await db
       .delete(content)
-      .where(eq(category.category_id, params.contentId as string));
+      .where(eq(content.content_id, params.contentId as string));
     return Response.json(deleteContent);
   } catch (error: any) {
     return Response.error();

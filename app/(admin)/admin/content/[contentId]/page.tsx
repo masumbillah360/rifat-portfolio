@@ -13,6 +13,7 @@ interface IParams {
 const Details = async({params: { contentId}}:IParams) => {
   const user = await getCurrentUser();
   const content = await getContentDetails(contentId);
+
   return (
     <div className='mt-4 mb-8'>
       <ContentDetails user={user} content={content} />
