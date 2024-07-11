@@ -9,10 +9,10 @@ export async function POST(request: Request) {
       subTitle,
       description,
       thumbnail,
-      category: catId,
+      category: cat,
     } = await request.json();
     const getCategory = await db.query.category.findFirst({
-      where: eq(category.category_id, catId),
+      where: eq(category.category, cat),
     });
     if (!getCategory) {
       throw new Error("Category not found!");

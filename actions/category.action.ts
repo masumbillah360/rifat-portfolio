@@ -1,7 +1,6 @@
 "use server";
 
 import { db } from "@/db";
-import { category } from "@/db/schema/category.model";
 
 export const getAllCategory = async () => {
   try {
