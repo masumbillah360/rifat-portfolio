@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "05214f58-847a-4650-8a15-5a84459a530f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "d9b650ca-d50e-4c5e-8c3a-6acb7637d140",
+  "prevId": "05214f58-847a-4650-8a15-5a84459a530f",
   "tables": {
     "category": {
       "name": "category",
@@ -130,7 +130,8 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "''"
         },
         "createdAt": {
           "name": "createdAt",

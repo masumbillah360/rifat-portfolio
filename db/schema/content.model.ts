@@ -15,6 +15,8 @@ export const content = sqliteTable("content", {
     .notNull()
     .default(sql`(json_array())`),
   categoryId: integer("categoryId"),
+  contentStatus: integer("content_status", { mode: "boolean" }).default(true),
+  searchKey: text("search_key").default(""),
   createdAt: text("createdAt")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
