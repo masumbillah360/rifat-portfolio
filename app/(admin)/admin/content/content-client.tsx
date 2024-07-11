@@ -44,11 +44,9 @@ const ContentClient = ({ contents, user }: Props) => {
         </div>
         <div className="grid sm:grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 justify-between items-center">
           {contents.map((content) => (
-            <ContentCard
-              key={content.content_id}
-              content={content}
-              user={user}
-            />
+            <div className="border rounded" key={content.content_id}>
+              <ContentCard content={content} user={user} />
+            </div>
           ))}
         </div>
       </div>

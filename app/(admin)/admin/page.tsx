@@ -1,16 +1,17 @@
 import React from "react";
 
-const AdminDashboardPage = () => {
+import getCurrentUser from "@/actions/getUser.action";
+import { getAllContent } from "@/actions/content.action";
+import { getAllCategory } from "@/actions/category.action";
+import AdminClient from "./admin-client";
+
+const AdminDashboardPage = async () => {
+  const user = await getCurrentUser();
+  const contents = await getAllContent();
+  const categories = await getAllCategory();
+
   return (
-    <div>
-      {Array.from({ length: 10 }).map((_, i) => (
-        <div key={i} className="min-h-screen">
-          Admin Dashboard Page {i + 1} - Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed eleifend, nunc eu condimentum venenatis, mauris
-          ligula consequat velit, vel fringilla nisi felis vel nunc.
-        </div>
-      ))}
-    </div>
+    <AdminClient categories={categories} contents={contents} user={user} />
   );
 };
 

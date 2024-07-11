@@ -23,7 +23,7 @@ const ContentCard = ({ content, user }: Props) => {
   return (
     <Link
       href={`/admin/content/${content.content_id}`}
-      className="border rounded"
+      className="size-full"
     >
       <div>
         <Image
