@@ -73,7 +73,7 @@ const ContactSection = () => {
   }
 
   return (
-    <div className="relative my-10 md:my-14 lg:my-20">
+    <div className="relative mt-4">
       <div>
         <SectionHeading
           title="Contact Us"
