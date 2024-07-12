@@ -1,6 +1,7 @@
 "use client";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import queryString from "query-string";
 import {
   Pagination,
   PaginationContent,
@@ -17,17 +18,22 @@ interface QueryPaginationProps {
 }
 
 const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
+  const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get("page")) || 1;
+  const searchParams = queryString.parse(window.location.search);
+  const currentPage = Number(searchParams.page) || 1;
 
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
 
   const createPageURL = (pageNumber: string | number) => {
-    const params = new URLSearchParams(searchParams);
-    params.set("page", pageNumber.toString());
-    return `${pathname}?${params.toString()}`;
+    const params = { ...searchParams, page: pageNumber.toString() };
+    return `${pathname}?${queryString.stringify(params)}`;
+  };
+
+  const handlePageChange = (pageNumber: string | number) => {
+    const newURL = createPageURL(pageNumber);
+    router.push(newURL);
   };
 
   const visiblePageCount = 6; // Show 6 visible page numbers
@@ -49,12 +55,12 @@ const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
     <Pagination className={className}>
       <PaginationContent>
         {prevPage >= 1 && (
-          <PaginationItem className="">
-            <PaginationPrevious href={createPageURL(prevPage)} />
+          <PaginationItem>
+            <PaginationPrevious onClick={() => handlePageChange(prevPage)} />
           </PaginationItem>
         )}
-        {currentPage > 4 && (
-          <PaginationItem className="hidden sm:inline-block">
+        {currentPage > 3 && (
+          <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
         )}
@@ -65,7 +71,7 @@ const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
           >
             <PaginationLink
               isActive={currentPage === pageNumber}
-              href={createPageURL(pageNumber)}
+              onClick={() => handlePageChange(pageNumber)}
             >
               {pageNumber}
             </PaginationLink>
@@ -78,7 +84,7 @@ const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
         )}
         {nextPage <= totalPage && (
           <PaginationItem>
-            <PaginationNext href={createPageURL(currentPage + 1)} />
+            <PaginationNext onClick={() => handlePageChange(nextPage)} />
           </PaginationItem>
         )}
       </PaginationContent>

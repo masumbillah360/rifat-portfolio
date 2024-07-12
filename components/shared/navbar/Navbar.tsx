@@ -21,11 +21,11 @@ import { ModeToggle } from "@/components/ui/toggle-theme";
 const Navbar = () => {
   // const { theme } = useTheme();
   const pathname = usePathname();
-  const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-  if (!hasMounted) return null;
+  // const [hasMounted, setHasMounted] = useState(false);
+  // useEffect(() => {
+  //   setHasMounted(true);
+  // }, []);
+  // if (!hasMounted) return null;
   return (
     <nav className="w-full  content-center shadow-md sticky top-0 z-50 bg-white/35 dark:bg-slate-800/35 backdrop-blur-sm">
       <section className="flex justify-between items-center max-w-7xl mx-auto">
