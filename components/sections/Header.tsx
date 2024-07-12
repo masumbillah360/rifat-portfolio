@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { animateWithGsap } from "@/lib/utils";
 import { socialLinks } from "@/constatns";
+import { animateWithGsap } from "@/lib/utils";
 
 const Header = () => {
   useGSAP(() => {
@@ -19,7 +19,7 @@ const Header = () => {
     );
     animateWithGsap(
       ".gSubText",
-      { opacity: 1, y: 0, duration: 1, delay: 1, ease: "power3.inOut" },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.inOut" },
       {}
     );
     animateWithGsap(
@@ -34,16 +34,19 @@ const Header = () => {
       },
       {}
     );
-    animateWithGsap(".socialLink", {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power1.in",
-      scale: 1,
-      rotate: 360,
-      delay: 1,
-      stagger: 0.5,
-    }, {})
+    animateWithGsap(
+      ".socialLink",
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power1.in",
+        scale: 1,
+        rotate: 360,
+        stagger: 0.5,
+      },
+      {}
+    );
   }, []);
   return (
     <div className="flex flex-col-reverse md:flex-row md:gap-3 justify-start md:justify-between items-center min-h-screen">
@@ -52,7 +55,7 @@ const Header = () => {
           <div className="headingText gText">
             SR <span className="text-green-500">GRAPHIC</span> STUDIO
           </div>
-          <div className="underline underline-offset-8 opacity-0 transform translate-y-20 gSubText">
+          <div className="underline underline-offset-8 opacity-0 transform translate-y-2 gSubText">
             Graphic Design & Branding
           </div>
           <div className="flex flex-row justify-center items-center gap-3 mt-8">
@@ -62,7 +65,7 @@ const Header = () => {
                 href={li.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200 scale-0 opacity-0 transform translate-y-20 socialLink"
+                className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200 scale-0 opacity-0 transform translate-y-10 socialLink"
               >
                 <Image src={li.icon} alt={li.label} height={40} width={40} />
               </a>
