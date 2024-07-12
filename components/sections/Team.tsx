@@ -11,7 +11,7 @@ export const Team = () => {
   useGSAP(() => {
     animateWithGsap(".member-0", {
       opacity: 1,
-      y: 0,
+      scale: 1,
       duration: 1,
       ease: "power2.inOut",
     }, {})
@@ -19,7 +19,7 @@ export const Team = () => {
       ".member-1",
       {
         opacity: 1,
-        y: 0,
+        scale: 1,
         duration: 1,
         ease: "power2.inOut",
       },
@@ -29,7 +29,7 @@ export const Team = () => {
       ".member-2",
       {
         opacity: 1,
-        y: 0,
+        scale: 1,
         duration: 1,
         ease: "power2.inOut",
       },
@@ -39,7 +39,7 @@ export const Team = () => {
       ".member-3",
       {
         opacity: 1,
-        y: 0,
+        scale: 1,
         duration: 1,
         ease: "power2.inOut",
       },
@@ -50,7 +50,7 @@ export const Team = () => {
     <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl py-4">
       <div className="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-lg">
         {teams.map((member, i) => (
-          <div key={member.name} className={`grid sm:grid-cols-3 ${`member-${i}`}`}>
+          <div key={member.name} className={`grid sm:grid-cols-3 opacity-0 scale-0 ${`member-${i}`}`}>
             <div className="relative w-full h-48 max-h-full rounded shadow sm:h-auto">
               <Image
               height={200}

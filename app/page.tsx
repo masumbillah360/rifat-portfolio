@@ -8,7 +8,7 @@ export default async function Home() {
   const categories = await getAllCategory(4);
   return (
     <div className="overflow-hidden">
-      <section className="min-h-screen max-w-7xl mx-auto">
+      <section className="min-h-screen max-w-7xl mx-auto p-2">
         <Header />
         <About />
         <ContactSection />

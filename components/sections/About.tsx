@@ -1,14 +1,13 @@
 "use client";
+import gsap from "gsap";
 import React from "react";
 import { Team } from "./Team";
-import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import { animateWithGsap } from "@/lib/utils";
 import { ArrowDown, Check } from "lucide-react";
 import SectionHeading from "../ui/sectionHeading";
 import AnimationLottieClient from "@/components/lottie/client";
 import { features, processSteps, whatWeDo } from "@/constatns";
-import { useGSAP } from "@gsap/react";
-import { animateWithGsap } from "@/lib/utils";
-import gsap from "gsap";
 
 const About = () => {
   useGSAP(() => {
@@ -18,7 +17,19 @@ const About = () => {
         duration: 1,
         y: 0,
         x: 0,
-        ease: "bounce.inOut",
+        ease: "back.inOut",
+        scale: 1,
+        opacity: 1,
+      },
+      {}
+    );
+    animateWithGsap(
+      ".gHeading3",
+      {
+        duration: 1,
+        y: 0,
+        x: 0,
+        ease: "back.inOut",
         scale: 1,
         opacity: 1,
       },
@@ -36,7 +47,7 @@ const About = () => {
       },
       {}
     );
-    
+
     gsap.to(".gDesc", {
       duration: 1,
       y: 0,
@@ -59,7 +70,7 @@ const About = () => {
       duration: 1,
       y: 0,
       x: 0,
-      ease: "power1.inOut",
+      ease: "back.inOut",
       scale: 1,
       opacity: 1,
       stagger: 0.5,
@@ -105,24 +116,15 @@ const About = () => {
             </div>
           </div>
           <div className="hidden md:block">
-            <div className="size-48 p-2 rounded-full border border-rose-500">
-              <Image
-                src="/assets/images/test-image.jpg"
-                alt="Test Image"
-                height={1000}
-                width={1000}
-                className="size-full rounded-full border"
-              />
+            <div className="size-48 flex flex-col justify-center items-center">
+              <AnimationLottieClient animationPath="/lottie/ai-design.json" />
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-2 md:flex-row">
         <div className="w-full">
-          <div
-            id=""
-            className="transform translate-y-20 opacity-0 scale-0 gHeading"
-          >
+          <div id="" className="transform opacity-0 scale-0 gHeading">
             <SectionHeading
               title="What We Do"
               subTitle="Our working area"
@@ -153,10 +155,7 @@ const About = () => {
           </div>
         </div>
         <div className="w-full">
-          <div
-            id=""
-            className="transform translate-y-20 opacity-0 scale-0 gHeading"
-          >
+          <div id="" className="transform opacity-0 scale-0 gHeading3">
             <SectionHeading
               title="Why Choose Us?"
               subTitle="Get best services from us"
@@ -188,10 +187,7 @@ const About = () => {
         </div>
       </div>
       <div className="mt-10 md:mt-20">
-        <div
-          id=""
-          className="transform translate-y-20 opacity-0 scale-0 gHeading2"
-        >
+        <div id="" className="transform opacity-0 scale-0 gHeading2">
           <SectionHeading
             title="Our Process"
             subTitle="Described our working process below"
