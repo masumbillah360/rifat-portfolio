@@ -1,85 +1,13 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import SectionHeading from "../ui/sectionHeading";
-import { ArrowBigDown, ArrowDown, Check } from "lucide-react";
 import { Team } from "./Team";
+import Image from "next/image";
+import { ArrowDown, Check } from "lucide-react";
+import SectionHeading from "../ui/sectionHeading";
+import AnimationLottieClient from "@/components/lottie/client";
+import { features, processSteps, whatWeDo } from "@/constatns";
 
-const whatWeDo = [
-  {
-    title: "Graphic Design",
-    description:
-      "Our team of skilled designers will create eye-catching visuals that not only enhance your brand's reputation but also help you stand out in the market",
-  },
-  {
-    title: "Brand Identity",
-    description:
-      "Logo design, brand guidelines, and complete visual identity packages",
-  },
-  {
-    title: "Print Design",
-    description: "Brochures, business cards, posters, and packaging design",
-  },
-  {
-    title: "Digital Design",
-    description:
-      "Website graphics, social media visuals, and digital marketing materials",
-  },
-  {
-    title: "Illustration",
-    description: "Custom illustrations and artwork tailored to your needs",
-  },
-  {
-    title: "Motion Graphics",
-    description:
-      "Engaging animations and video graphics for dynamic storytelling",
-  },
-];
 
-const features = [
-  {
-    title: "Creative Expertise",
-    description:
-      "Our team is composed of talented designers with diverse skills and a keen eye for detail.",
-  },
-  {
-    title: "Client-Centric Approach",
-    description:
-      "We prioritize our clients' needs and work closely with them to bring their vision to life.",
-  },
-  {
-    title: "Innovative Solutions",
-    description:
-      "We stay up-to-date with the latest design trends and technologies to provide cutting-edge solutions.",
-  },
-  {
-    title: "Timely Delivery",
-    description:
-      "We understand the importance of deadlines and ensure that our projects are delivered on time, every time.",
-  },
-];
-const processSteps = [
-  {
-    title: "Consultation",
-    description:
-      "We start by understanding your goals, target audience, and brand personality",
-  },
-  {
-    title: "Concept Development",
-    description:
-      "Our designers brainstorm and create initial concepts based on your input",
-  },
-  {
-    title: "Design & Refinement",
-    description:
-      "We refine the chosen concept, incorporating your feedback to perfect the design",
-  },
-  {
-    title: "Final Delivery",
-    description:
-      "The final design is delivered in all required formats, ready for use across various platforms",
-  },
-];
 
 const About = () => {
   return (
@@ -87,14 +15,8 @@ const About = () => {
       <SectionHeading title="About Us" center />
       <div className="flex flex-col gap-4 md:gap-20 md:flex-row items-center md:items-stretch justify-center mt-8">
         <div className="">
-          <div className="size-48 p-2 rounded-full border border-rose-500">
-            <Image
-              src="/assets/images/test-image.jpg"
-              alt="Test Image"
-              height={1000}
-              width={1000}
-              className="size-full rounded-full border"
-            />
+          <div className="size-48 p-2">
+            <AnimationLottieClient animationPath={"/lottie/color-animation.json"} />
           </div>
         </div>
         <div className="flex flex-col gap-8">
