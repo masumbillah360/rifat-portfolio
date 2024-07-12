@@ -136,3 +136,54 @@ export const processSteps = [
       "The final design is delivered in all required formats, ready for use across various platforms",
   },
 ];
+
+export const teams = [
+  {
+    name: "Oliver Aguilerra",
+    designation: "Product Manager",
+    description:
+      "Vincent Van Gogh&apos;s most popular painting, The Starry Night.",
+    image:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260",
+    socialMedia: {
+      facebook: "",
+      twitter: "",
+    },
+  },
+  {
+    name: "Marta Clermont",
+    designation: "Design Team Lead",
+    description:
+      "Amet I love liquorice jujubes pudding croissant I love pudding.",
+    image:
+      "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+    socialMedia: {
+      facebook: "",
+      twitter: "",
+    },
+  },
+  {
+    name: "Alice Melbourne",
+    designation: "Human Resources",
+    description:
+      "Lorizzle ipsum bling bling sit amizzle, consectetuer adipiscing elit",
+    image:
+      "https://images.pexels.com/photos/3747435/pexels-photo-3747435.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+    socialMedia: {
+      facebook: "",
+      twitter: "",
+    },
+  },
+  {
+    name: "John Doe",
+    designation: "Designer",
+    description:
+      "Bacon ipsum dolor sit amet salami jowl corned beef, andouille flank",
+    image:
+      "https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260",
+    socialMedia: {
+      facebook: "",
+      twitter: "",
+    },
+  },
+];

@@ -5,8 +5,8 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "utfs.io",
-        // pathname: process.env.UPLOADTHING_APP_ID,
       },
+      { protocol: "https", hostname: "images.pexels.com" },
     ],
   },
 };

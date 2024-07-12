@@ -122,14 +122,14 @@ export const Footer = ({ categories }: Props) => {
             <form
               ref={ref}
               onSubmit={handleSubmit}
-              className="flex flex-col mt-4 md:flex-row"
+              className="flex flex-col mt-4 md:flex-row gap-4"
             >
               <Input
                 placeholder="Email"
                 required
                 type="text"
               />
-              <Button variant="outline" type="submit" className="ml-2" >Subscribe</Button>
+              <Button variant="outline" type="submit" className="md:ml-2" >Subscribe</Button>
             </form>
             <p className="mt-4 text-sm text-gray-500">
               To get our latest works and events update please subscribe us, Thank you.

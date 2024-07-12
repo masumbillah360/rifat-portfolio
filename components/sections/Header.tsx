@@ -46,7 +46,7 @@ const Header = () => {
     }, {})
   }, []);
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-3 justify-end md:justify-between items-center min-h-screen">
+    <div className="flex flex-col-reverse md:flex-row md:gap-3 justify-center md:justify-between items-center min-h-screen">
       <div className="size-full flex justify-center items-center">
         <div className="size-full text-center flex flex-col gap-4">
           <div className="headingText gText">
