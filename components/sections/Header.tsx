@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { animateWithGsap } from "@/lib/utils";
+import { socialLinks } from "@/constatns";
 
 const Header = () => {
   useGSAP(() => {
@@ -33,26 +34,51 @@ const Header = () => {
       },
       {}
     );
+    animateWithGsap(".socialLink", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power1.in",
+      scale: 1,
+      rotate: 360,
+      delay: 1,
+      stagger: 0.5,
+    }, {})
   }, []);
   return (
     <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-3 justify-end md:justify-between items-center min-h-screen">
       <div className="size-full flex justify-center items-center">
         <div className="size-full text-center flex flex-col gap-4">
-          <div className="headingText gText">SR GRAPHIC STUDIO</div>
+          <div className="headingText gText">
+            SR <span className="text-green-500">GRAPHIC</span> STUDIO
+          </div>
           <div className="underline underline-offset-8 opacity-0 transform translate-y-20 gSubText">
             Graphic Design & Branding
+          </div>
+          <div className="flex flex-row justify-center items-center gap-3 mt-8">
+            {socialLinks.map((li) => (
+              <a
+                key={li.href}
+                href={li.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200 scale-0 opacity-0 transform translate-y-20 socialLink"
+              >
+                <Image src={li.icon} alt={li.label} height={40} width={40} />
+              </a>
+            ))}
           </div>
         </div>
       </div>
       <div className="w-full h-1/2 md:h-full flex justify-center items-center mt-8 md:mt-0">
         <div className="flex justify-center items-center">
-          <div className="size-72 p-2 rounded-full border border-rose-500 gDiv opacity-0 transform -translate-y-20 scale-0">
+          <div className="size-96 p-2 gDiv opacity-0 transform -translate-y-20 scale-0">
             <Image
-              src="/assets/images/test-image.jpg"
+              src="/assets/images/sr-logo.png"
               alt="Test Image"
               height={1000}
               width={1000}
-              className="size-full rounded-full border"
+              className="size-full"
             />
           </div>
         </div>

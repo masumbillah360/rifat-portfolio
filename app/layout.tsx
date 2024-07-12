@@ -15,9 +15,7 @@ import { extractRouterConfig } from "uploadthing/server";
 
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import DeleteContentModal from "@/components/modals/ContentDeleteModal";
-import { Footer } from "@/components/shared/footer/Footer";
-import { getAllCategory } from "@/actions/category.action";
- 
+
 
 
 const fontSans = FontSans({
@@ -36,7 +34,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = await getAllCategory(4);
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -61,7 +59,6 @@ export default async function RootLayout({
             <UpdateCategoryModal />
             <DeleteCategoryModal />
             {children}
-            <Footer categories={categories} />
           </main>
           <ToasterProvider />
         </ThemeProvider>
