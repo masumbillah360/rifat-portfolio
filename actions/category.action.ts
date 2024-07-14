@@ -17,8 +17,8 @@ export const getAllCategory = async (limit?: number) => {
       limit: limit ? limit : 100,
     });
     return categories;
-  } catch (error) {
-    console.log(error);
+  } catch (error:any) {
+    console.log(["TO GET CAT "],error.message);
     return [];
   }
 };

@@ -11,6 +11,7 @@ export async function POST(request: Request) {
       thumbnail,
       category: cat,
     } = await request.json();
+    console.log({cat})
     const getCategory = await db.query.category.findFirst({
       where: eq(category.category, cat),
     });

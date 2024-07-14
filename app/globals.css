@@ -135,12 +135,12 @@ h3 {
 }
 
 
-ul > li {
+tiptap > ul > li {
   list-style-type: disc;
   list-style: circle;
   margin-left: 2rem;
 }
-ol> li {
+tiptap>ol> li {
   list-style-type: decimal;
   margin-left: 2rem;
 }

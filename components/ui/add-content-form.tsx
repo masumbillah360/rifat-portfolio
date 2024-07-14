@@ -121,7 +121,7 @@ const AddContentForm = ({ categories }: Props) => {
                       {categories.map((cat) => (
                         <SelectItem
                           key={cat.category_id}
-                          value={cat?.category_id!}
+                          value={cat?.category!}
                         >
                           {cat?.category}
                         </SelectItem>

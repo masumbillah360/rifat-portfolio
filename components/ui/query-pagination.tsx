@@ -1,7 +1,6 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import React from "react";
-import queryString from "query-string";
 import {
   Pagination,
   PaginationContent,
@@ -18,25 +17,21 @@ interface QueryPaginationProps {
 }
 
 const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
-  const router = useRouter();
   const pathname = usePathname();
-  const searchParams = queryString.parse(window.location.search);
-  const currentPage = Number(searchParams.page) || 1;
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
 
   const createPageURL = (pageNumber: string | number) => {
-    const params = { ...searchParams, page: pageNumber.toString() };
-    return `${pathname}?${queryString.stringify(params)}`;
+    const params = new URLSearchParams(searchParams);
+    params.set("page", pageNumber.toString());
+    return `${pathname}?${params.toString()}`;
   };
 
-  const handlePageChange = (pageNumber: string | number) => {
-    const newURL = createPageURL(pageNumber);
-    router.push(newURL);
-  };
-
-  const visiblePageCount = 6; // Show 6 visible page numbers
+  const visiblePageCount = 12; // Show 12 visible page numbers
   const halfVisibleCount = Math.floor(visiblePageCount / 2);
 
   const getVisiblePageNumbers = () => {
@@ -51,22 +46,26 @@ const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
   const visiblePageNumbers = getVisiblePageNumbers();
   const endPage = visiblePageNumbers[visiblePageNumbers.length - 1];
 
+  const handlePageChange = (pageNumber: number) => {
+    router.push(createPageURL(pageNumber));
+  };
+
   return (
     <Pagination className={className}>
       <PaginationContent>
         {prevPage >= 1 && (
-          <PaginationItem>
+          <PaginationItem className="cursor-pointer antialiased select-none">
             <PaginationPrevious onClick={() => handlePageChange(prevPage)} />
           </PaginationItem>
         )}
-        {currentPage > 3 && (
-          <PaginationItem>
+        {currentPage > 4 && (
+          <PaginationItem className="hidden sm:inline-block">
             <PaginationEllipsis />
           </PaginationItem>
         )}
         {visiblePageNumbers.map((pageNumber) => (
           <PaginationItem
-            className="hidden sm:inline-block"
+            className="hidden sm:inline-block cursor-pointer"
             key={`page-${pageNumber}`}
           >
             <PaginationLink
@@ -83,7 +82,7 @@ const QueryPagination = ({ totalPage, className }: QueryPaginationProps) => {
           </PaginationItem>
         )}
         {nextPage <= totalPage && (
-          <PaginationItem>
+          <PaginationItem className="cursor-pointer antialiased select-none">
             <PaginationNext onClick={() => handlePageChange(nextPage)} />
           </PaginationItem>
         )}
