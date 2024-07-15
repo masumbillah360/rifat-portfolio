@@ -8,7 +8,6 @@ interface Props {
 }
 
 const ContentCard = ({ content }: Props) => {
-  console.log(["Content CArd"], content)
   return (
     <Link
       href={`/projects/${content.content_id}`}

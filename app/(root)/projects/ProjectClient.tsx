@@ -83,7 +83,7 @@ const ProjectClient = ({
   return (
     <section className="min-h-screen mt-4">
       <div className="flex flex-row gap-2 w-full">
-        <div className="py-2 px-4 border rounded-full w-36 flex justify-center items-center gap-2">
+        <div className="hidden py-2 px-4 border rounded-full w-36 lg:flex justify-center items-center gap-2">
           <SlidersHorizontal />
           Filter
         </div>
@@ -107,7 +107,7 @@ const ProjectClient = ({
             )}
           </div>
         </div>
-        <div className="py-2 px-4 border rounded-full w-48 flex justify-center items-center">
+        <div className="hidden py-2 px-4 border rounded-full w-48 lg:flex justify-center items-center">
           Recommended
         </div>
       </div>
