@@ -1,14 +1,14 @@
 "use server";
 
 import { db } from "@/db";
-import { eq, not } from "drizzle-orm";
+import { asc, eq, not } from "drizzle-orm";
 import { content } from "@/db/schema";
 import getCurrentUser from "./getUser.action";
 
 export const getAllContent = async () => {
   try {
     const contents = await db.query.content.findMany({
-      orderBy: (cont, { desc }) => [desc(cont.id)],
+      orderBy: [asc(content.id)],
       with: {
         category: {
           columns: {

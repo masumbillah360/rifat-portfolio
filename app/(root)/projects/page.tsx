@@ -13,7 +13,7 @@ interface HomeProps {
 const ProjectPage = async ({ searchParams }: HomeProps) => {
   console.log(["Search Params"],searchParams)
   const contents = await getAllContent();
-  console.log(contents)
+  console.log(["contents"], contents)
   return (
     <div>
       <ProjectClient contents = {contents} />
