@@ -2,20 +2,34 @@
 
 import queryString from "query-string";
 import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import QueryPagination from "@/components/ui/query-pagination";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import ContentCard from "@/components/ui/cards/public-content-card";
 
-const ProjectClient = ({ contents }: { contents: any[] }) => {
+const ProjectClient = ({
+  contents,
+  categories,
+  totalPage,
+  currentPage,
+  total,
+}: {
+  contents: any[];
+  categories: any[];
+  totalPage?: number;
+  currentPage?: number;
+  total?: number;
+}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  const categories = ["Social", "Design", "Brand", "Other"];
-
+  const [hasMounted, setHasMounted] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
   useEffect(() => {
     const queryCategory = queryString.parse(window.location.search).category;
     if (typeof queryCategory === "string") {
@@ -24,9 +38,38 @@ const ProjectClient = ({ contents }: { contents: any[] }) => {
       setSelectedCategory(null);
     }
   }, [searchParams]);
+  const handleSearch = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newSearch = e.target.value.trim();
+      const queryParams = {
+        ...queryString.parse(window.location.search),
+        search: newSearch || undefined,
+      };
+
+      const newQuery = queryString.stringify(queryParams);
+      router.push(`?${newQuery}`);
+    },
+    [router]
+  );
+  const handleCloseSearch = useCallback(() => {
+    if (searchRef.current) {
+      searchRef.current.value = "";
+    }
+    const queryParams = {
+      ...queryString.parse(window.location.search),
+      search: undefined,
+    };
+
+    const newQuery = queryString.stringify(queryParams);
+    router.push(`?${newQuery}`);
+  }, [router]);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   const handleCategoryClick = (category: string) => {
-    const newCategory = selectedCategory === category ? null : category;
+    const newCategory = selectedCategory == category ? null : category;
 
     const queryParams = {
       ...queryString.parse(window.location.search),
@@ -48,13 +91,20 @@ const ProjectClient = ({ contents }: { contents: any[] }) => {
           <div className="flex items-center justify-start gap-4 w-full">
             <Search />
             <div className="w-full">
-              <Input className="min-w-full border-none" placeholder="Search" />
+              <Input
+                ref={searchRef}
+                onChange={handleSearch}
+                className="min-w-full border-none"
+                placeholder="Search"
+              />
             </div>
           </div>
           <div>
-            <button>
-              <X />
-            </button>
+            {searchRef.current && searchRef.current.value && (
+              <button onClick={handleCloseSearch}>
+                <X />
+              </button>
+            )}
           </div>
         </div>
         <div className="py-2 px-4 border rounded-full w-48 flex justify-center items-center">
@@ -67,13 +117,13 @@ const ProjectClient = ({ contents }: { contents: any[] }) => {
             <div
               key={i}
               className={`flex items-center py-2 px-4 border rounded-full cursor-pointer ${
-                selectedCategory === category
+                selectedCategory == category.id
                   ? "bg-slate-900 text-white"
                   : "bg-white dark:bg-slate-600 text-slate-800 dark:text-slate-200"
               }`}
-              onClick={() => handleCategoryClick(category)}
+              onClick={() => handleCategoryClick(category.id)}
             >
-              {category}
+              {category.category}
             </div>
           ))}
         </div>
@@ -87,7 +137,7 @@ const ProjectClient = ({ contents }: { contents: any[] }) => {
         ))}
       </div>
       <div className="m-6 px-4 py-2 rounded border">
-        <QueryPagination totalPage={100} />
+        <QueryPagination totalPage={totalPage} />
       </div>
     </section>
   );
