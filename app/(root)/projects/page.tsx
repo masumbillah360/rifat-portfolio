@@ -4,7 +4,7 @@ import { getAllCategory } from "@/actions/category.action";
 
 interface HomeProps {
   searchParams: {
-    category: string | undefined;
+    category: number | undefined;
     page: string;
     sort: string;
     search: string | undefined;
@@ -13,7 +13,6 @@ interface HomeProps {
 
 const ProjectPage = async ({ searchParams }: HomeProps) => {
   const {data, currentPage, limit, total, totalPage} = await getAllContentWithPagination(searchParams);
-  console.log(["Search Params"], searchParams, {data, currentPage, limit, total, totalPage});
   const categories = await getAllCategory();
   return (
     <div>

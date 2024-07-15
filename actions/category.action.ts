@@ -1,17 +1,18 @@
 "use server";
 
 import { db } from "@/db";
+import { category } from "@/db/schema";
+import { desc } from "drizzle-orm";
 
 export const getAllCategory = async (limit?: number) => {
   try {
     const categories = await db.query.category.findMany({
-      orderBy: (cat, { desc }) => [desc(cat.id)],
+      orderBy: desc(category.id),
       with: {
         content: {
           columns: {
             title: true,
           },
-          orderBy: (content, { desc }) => [desc(content.id)],
         },
       },
       limit: limit ? limit : 100,
