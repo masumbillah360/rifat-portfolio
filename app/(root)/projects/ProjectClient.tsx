@@ -12,7 +12,7 @@ import ContentCard from "@/components/ui/cards/public-content-card";
 const ProjectClient = ({
   contents,
   categories,
-  totalPage,
+  totalPage = 0,
   currentPage,
   total,
 }: {

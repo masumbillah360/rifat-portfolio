@@ -18,8 +18,8 @@ const ContentCard = ({ content }: Props) => {
         <Image
           src={content.thumbnail[0]}
           alt="Content Thumb"
-          className="rounded-t shadow object-cover"
-          width={400}
+          className="rounded-t shadow object-cover min-size-full"
+          width={300}
           height={200}
         />
         <div className="flex items-center justify-between">
