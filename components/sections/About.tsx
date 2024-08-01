@@ -81,7 +81,7 @@ const About = () => {
       <SectionHeading title="About Us" center />
       <div className="flex flex-col gap-4 md:gap-20 md:flex-row items-center md:items-stretch justify-center mt-8">
         <div className="">
-          <div className="size-48 p-2">
+          <div className="size-48 p-2 flex justify-center items-center">
             <AnimationLottieClient
               animationPath={"/lottie/color-animation.json"}
             />

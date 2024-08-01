@@ -36,7 +36,6 @@ export const adminDashboardRoutes = [
   },
 ];
 
-
 export const socialLinks = [
   {
     label: "Mail",
@@ -65,29 +64,35 @@ export const whatWeDo = [
     title: "Graphic Design",
     description:
       "Our team of skilled designers will create eye-catching visuals that not only enhance your brand's reputation but also help you stand out in the market",
+    lottiePath: "/lottie/graphics.json",
   },
   {
     title: "Brand Identity",
     description:
       "Logo design, brand guidelines, and complete visual identity packages",
+    lottiePath: "/lottie/brand.json",
   },
   {
     title: "Print Design",
     description: "Brochures, business cards, posters, and packaging design",
+    lottiePath: "/lottie/print.json",
   },
   {
     title: "Digital Design",
     description:
       "Website graphics, social media visuals, and digital marketing materials",
+    lottiePath: "/lottie/digital.json",
   },
   {
     title: "Illustration",
     description: "Custom illustrations and artwork tailored to your needs",
+    lottiePath: "/lottie/illustration.json",
   },
   {
     title: "Motion Graphics",
     description:
       "Engaging animations and video graphics for dynamic storytelling",
+    lottiePath: "/lottie/motion.json",
   },
 ];
 

@@ -1,14 +1,18 @@
 "use client";
 
 import { z } from "zod";
+import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // form spree
 import { useForm as spreeForm } from "@formspree/react";
 
-import { Button } from "@/components/ui/button";
 
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Button } from "@/components/ui/button";
+import SectionHeading from "../ui/sectionHeading";
 import AnimationLottieClient from "@/components/lottie/client";
 import {
   Form,
@@ -19,10 +23,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import toast from "react-hot-toast";
-import SectionHeading from "../ui/sectionHeading";
 
 const formSchema = z.object({
   name: z
@@ -57,8 +57,6 @@ const ContactSection = () => {
 
   // Form Spree state and submit function
   const [state, handleSubmit] = spreeForm("xpznvovg");
-  console.log(["FORM SUBMITTING STATUS ", state.succeeded]);
-
   let isSubmitting = false;
   function onSubmit(values: z.infer<typeof formSchema>) {
     isSubmitting = true;
@@ -82,7 +80,7 @@ const ContactSection = () => {
         />
       </div>
       <div className="flex justify-between items-center my-10 md:my-14 lg:my-20">
-        <div className="hidden md:block w-full h-3/4">
+        <div className="hidden md:flex w-full h-3/4 justify-center items-center">
           <AnimationLottieClient animationPath={"/lottie/contact.json"} />
         </div>
         <Form {...form}>

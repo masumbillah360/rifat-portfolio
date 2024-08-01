@@ -10,7 +10,7 @@ const ServicePage = () => {
         <div
           key={service.title + "Service"}
           className={cn(
-            `w-full flex sm:flex-row flex-col-reverse justify-center sm:justify-normal border rounded-xl shadow-md`,
+            `w-full flex sm:flex-row flex-col-reverse justify-center items-center sm:justify-normal border rounded-xl shadow-md`,
             {
               "sm:flex-row-reverse": (i + 1) % 2 === 0,
             }
@@ -26,10 +26,7 @@ const ServicePage = () => {
           </div>
           <div className="w-full">
             <div className="sm:size-96 sm:mx-auto flex justify-center items-center">
-              <LottieClient
-                className=""
-                animationPath={"/lottie/color-animation.json"}
-              />
+              <LottieClient className="" animationPath={service.lottiePath} />
             </div>
           </div>
         </div>
