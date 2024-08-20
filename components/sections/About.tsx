@@ -8,6 +8,8 @@ import { ArrowDown, Check } from "lucide-react";
 import SectionHeading from "../ui/sectionHeading";
 import AnimationLottieClient from "@/components/lottie/client";
 import { features, processSteps, whatWeDo } from "@/constatns";
+import Stats from "../ui/stats";
+import ClientReview from "../ui/review";
 
 const About = () => {
   useGSAP(() => {
@@ -225,6 +227,7 @@ const About = () => {
         </div>
       </div>
       <div className="mt-10 md:mt-20">
+      <div className="mt-10 md:mt-20">
         <SectionHeading
           title="Our Team"
           subTitle="To give best services to our valuable client we have best team ever"
@@ -233,6 +236,25 @@ const About = () => {
         <div>
           <Team />
         </div>
+      </div>
+        <SectionHeading
+          title="Success Fully Delivered"
+          subTitle="We turn imagination into reality. Partner with us."
+          center
+        />
+        <div>
+          <Stats />
+        </div>
+      <div className="mt-10 md:mt-20">
+        <SectionHeading
+          title="Our Client Review"
+          subTitle="Always we try to serve best quality to our clients every time."
+          center
+        />
+        <div>
+          <ClientReview />
+        </div>
+      </div>
       </div>
     </div>
   );
