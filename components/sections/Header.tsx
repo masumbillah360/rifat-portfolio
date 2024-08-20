@@ -63,6 +63,7 @@ const Header = () => {
               <a
                 key={li.href}
                 href={li.href}
+                title={li.label}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200 scale-0 opacity-0 transform translate-y-10 socialLink"
